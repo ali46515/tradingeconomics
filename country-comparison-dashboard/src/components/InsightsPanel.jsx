@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { TrendingUp, TrendingDown, Minus } from "lucide-react";
 import { formatValue, capitalizeCountry } from "@/utils/dataFormatter.js";
 
