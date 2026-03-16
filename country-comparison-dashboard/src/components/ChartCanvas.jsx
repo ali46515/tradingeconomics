@@ -26,7 +26,7 @@ const ChartCanvas = ({ data, countries, indicator, isLoading }) => {
     const grouped = {};
     countries.forEach((c) => {
       grouped[c] = data
-        .filter((d) => d.country === c && d.value !== null)
+        .filter((d) => d.country.toLowerCase() === c && d.value !== null)
         .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
     });
 

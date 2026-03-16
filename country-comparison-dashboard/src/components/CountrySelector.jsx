@@ -52,7 +52,7 @@ const CountrySelector = ({ selected, onChange }) => {
           Countries
         </h3>
         <span className="font-mono-data text-[11px] text-muted-foreground">
-          {selected.length}/5
+          {selected.length}/4
         </span>
       </div>
 

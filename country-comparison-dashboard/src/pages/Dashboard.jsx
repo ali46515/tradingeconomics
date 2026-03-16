@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import AppSidebar from "@/components/AppSidebar.jsx";
 import ChartCanvas from "@/components/ChartCanvas.jsx";
@@ -9,7 +9,8 @@ import { calculateStatistics } from "@/utils/statistics.js";
 import { BarChart3 } from "lucide-react";
 
 const Dashboard = () => {
-  const [selectedCountries, setSelectedCountries] = useState(["united states", "china"]);
+  const isFetching = useRef(false);
+  const [selectedCountries, setSelectedCountries] = useState(["thailand", "mexico"]);
   const [selectedIndicator, setSelectedIndicator] = useState({
     id: "gdp growth rate",
     name: "GDP Growth Rate",
@@ -19,15 +20,17 @@ const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchData = useCallback(async () => {
-    if (!selectedCountries.length || !selectedIndicator) return;
+    if (!selectedCountries.length || !selectedIndicator || isFetching.current) return;
+    isFetching.current = true;
     setIsLoading(true);
     try {
-      const result = await fetchComparisonData(selectedCountries, selectedIndicator.id);
+      const result = await fetchComparisonData(selectedCountries, selectedIndicator.id);      
       setData(result);
     } catch (error) {
       console.error("Failed to fetch data:", error);
     } finally {
       setIsLoading(false);
+      isFetching.current = false;
     }
   }, [selectedCountries, selectedIndicator]);
 
