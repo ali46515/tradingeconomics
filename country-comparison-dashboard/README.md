@@ -25,9 +25,11 @@ A small, responsive dashboard for comparing country economic indicators using th
 
 	npm install
 
-4. Create or copy environment variables for API access (if needed):
+4. Set up environment variables:
 
-	- See `fetchApi/.env` for expected variables.
+- Create a file named .env inside the fetchApi/ directory and add the following variables:
+    - API_KEY=your_api_key_here
+	- API_BASE=https://api.example.com	
 
 ## Usage
 
