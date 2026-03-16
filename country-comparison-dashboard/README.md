@@ -56,10 +56,6 @@ Contributions are welcome. To contribute:
 
 Please open an issue first if you're planning a larger change so we can discuss the approach.
 
-## License
-
-This project is provided under the MIT License. See the LICENSE file for details.
-
 ## Authors & Acknowledgements
 
 - Project maintained by the repository owner.
